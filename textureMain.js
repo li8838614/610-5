@@ -134,9 +134,7 @@ function drawCurrentShape () {
     // you are using...The current texture is found in the global variable
     // curTexture.   If will have the value of "globe", "myimage" or "proc"
     var texture=worldTexture
-    if (curTexture=="myimage"){
-      texture=myTexture;
-    }
+   
 
     // which program are we using
     var program = sphereGlobeProgram;
@@ -312,7 +310,11 @@ function drawCurrentShape () {
     gl.uniform1f(program.kd,0.5);
     gl.uniform1f(program.ks,1);
     gl.uniform1f(program.ke,2);
-
+    gl.uniform1f(program.op,1);
+    if (curTexture=="myimage"){
+      gl.uniform1f(program.op,0);
+    }
+    
 
 
    
@@ -393,6 +395,7 @@ function initProgram (vertexid, fragmentid) {
   program.kd = gl.getUniformLocation (program, 'kd');
   program.ks = gl.getUniformLocation (program, 'ks');
   program.ke = gl.getUniformLocation (program, 'ke');
+  program.op = gl.getUniformLocation (program, 'op');
   
   
     

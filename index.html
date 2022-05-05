@@ -45,6 +45,7 @@
     uniform float kd;
     uniform float ks;
     uniform float ke;
+    uniform float op;
       
       
     void main()
@@ -70,7 +71,7 @@
         vec3 spec = ks * specHighlightColor * lightColor * pow (max(dot(R, V), 0.0), ke);
         
         // final color
-        theColor = ambient + diffuse + spec;
+        theColor = (ambient + diffuse + spec)*op;
 
 
 
@@ -256,10 +257,20 @@
                
                <table border="1">
                <tbody>
+              <tr>
+              <td>0</td>
+              <td>press any key to start sene</td>
+              </tr>
                <tr>
                <td>1</td>
-               <td>use 1 to start image</td>
+               <td>press 1 double time to close the lamp</td>
                </tr>
+               <tr>
+                <td>2</td>
+                <td>press 2 double time  to open the lamp</td>
+                </tr>
+
+              
               
                </tbody>
                </table>
